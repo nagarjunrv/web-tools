@@ -9,7 +9,7 @@ def chunkstring(string, length):
     return (' '.join(words[0+i:length+i]) for i in range(0, len(words), length))
 
 
-def get_content(link):
+def get_contents_pdf(link):
     # Getting the page's source code:
     source = requests.get(link)
 

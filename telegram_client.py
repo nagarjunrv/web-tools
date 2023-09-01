@@ -1,9 +1,16 @@
 import requests
+import configparser
 
-def get_ctq_link():
-    try:
-        response = requests.get(F'https://api.telegram.org/bot{token}/getUpdates')
-        print(response.text)
-    except Exception as e:
-        print(F'getUpdates Failed!\n{e}')
-    #return 'https://www.mentalfloss.com/article/31932/chasing-cicada-exploring-darkest-corridors-internet'
+class TelegramClient:
+    def __init__(self, config_file='configs/telegram_client_config.ini') -> None:
+        config = configparser.ConfigParser().read(config_file)
+        self.url_prefix = F"https://api.telegram.org/bot{config['DEFAULT']['token']}/getUpdates"
+
+    def getUpdates(self):
+        try:
+            response = requests.get(F'{self.url_prefix}/getUpdates')
+            print(response.text)
+        except Exception as e:
+            print(F'getUpdates Failed!\n{e}')
+            return None
+        return ''
