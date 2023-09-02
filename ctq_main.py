@@ -1,12 +1,12 @@
 from gmail_client import GClient
-from telegram_client import TelegramClient
+from telegram_client import TeleClient
 from web_client import get_contents_pdf
 from email.message import EmailMessage
 import mimetypes
 
 
 gclient = GClient()
-tclient = TelegramClient()
+tclient = TeleClient()
 
 
 def get_ctq_link():
@@ -32,7 +32,7 @@ def send_article_to_kindle():
 
 def main():
     #send_message_with_attachment(get_content(get_ctq_link()))
-    get_ctq_link()
+    tclient.get_me()
 
 
 if __name__ == '__main__':

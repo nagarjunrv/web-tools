@@ -18,7 +18,8 @@ from googleapiclient.errors import HttpError
 
 class GClient:
     def __init__(self, config_file = 'configs/google_client_config.ini') -> None:
-        config = configparser.ConfigParser().read(config_file)
+        config = configparser.ConfigParser()
+        config.read(config_file)
         self.SCOPES = config['DEFAULT']['scopes']
         self.creds_file = config['DEFAULT']['creds_file']
         self.token_file = config['DEFAULT']['token_file']
